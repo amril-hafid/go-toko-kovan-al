@@ -1,0 +1,269 @@
+{{template "web/partials/header_dasboard" .}}
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Detail</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/">Home</a>
+                        <a href="/shop">Shope</a>
+                        <span>Detail</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad page-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="product-pic-zoom">
+                            <img class="product-big-img" src="/image/{{.data.Image.URL}}" alt="">
+                            <div class="zoom-icon">
+                                <i class="fa fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="product-thumbs">
+                            <div class="product-thumbs-track ps-slider owl-carousel">
+                                <div class="pt active"
+                                    data-imgbigurl="/image/{{.data.Image.URL}}">
+                                    <img src="/image/{{.data.Image.URL}}"
+                                        alt="">
+                                </div>
+                                {{range .data.Image.ImageNoPrimary}}
+                                <div class="pt"
+                                    data-imgbigurl="/image/{{.URL}}">
+                                    <img src="/image/{{.URL}}"
+                                        alt="">
+                                </div>
+                                {{end}}
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--end image detail produk -->
+
+                    <div class="col-lg-6">
+                        <div class="product-details">
+                            <div class="pd-title">
+                                <!-- <span>oranges</span> -->
+                                <h3>{{.data.Product.Name}}</h3>
+                                <span>Sku : {{.data.Product.SKU}}</span>
+                                <!-- <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a> -->
+                            </div>
+
+                            <div class="pd-desc">
+                                <p>{{.data.Product.ShortDescription}}</p>
+
+                                <!-- <h4>{{.data.Product.ShortDescription}}</h4> -->
+                            </div>
+                            <div class="pd-color">
+                                <h6>Pembelian :</h6>
+                                <div class="pd-color-choose">
+                                </div>
+                            </div>
+
+                            <!-- toko online ecomers -->
+                            <div class="pd-size-choose">
+                                <div class="sc-item">
+                                    <a href="https://www.tokopedia.com/kovan">
+                                        <img class="asdf" for="sm-size"
+                                            src="/themes/kas/img/product-single/11asok.png">
+                                    </a>
+                                </div>
+                                <div class="sc-item">
+                                    <a href="https://shopee.co.id/kovan.id">
+                                        <img class="asdf" for="md-size"
+                                            src="/themes/kas/img/product-single/14asok.png">
+                                    </a>
+                                </div>
+                                <div class="sc-item">
+                                    <a href="https://www.blibli.com/merchant/kovan-furniture-official/KOF-70013">
+                                        <img class="asdf" for="xl-size"
+                                            src="/themes/kas/img/product-single/12asok.png">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <!--end toko online ecomers -->
+
+                            <!-- wa kontak  pembelian dan admin -->
+                            <div class="quantity">
+                                <a href="https://wa.me/6289675120109?text=Halo%20{{.data.Product.Name}}%20Harga%20{{.data.Product.Price}}" class="primary-btn pd-cart" style="font-size: 15px;">
+                                    <i class="fa fa-whatsapp" style="font-size: 20px;"></i>+62 896-7512-0109
+                                </a>
+                            </div>
+                            <!--end wa kontak  pembelian dan admin -->
+
+                            <ul class="pd-tags">
+                                <!-- <li><span>COLOR</span>: Clothing, T-shirt, Woman</li> -->
+                                <!-- <li><span>CATEGORIES</span>: More Accessories, Wallets & Cases</li> -->
+                                <!-- <li><span>TAGS</span>: Clothing, T-shirt, Woman</li> -->
+                            </ul>
+
+                            <!-- share sosial media -->
+                            <div class="pd-share">
+                                <!-- <div class="p-code">Sku : 00012</div> -->
+                                <div class="pd-social">
+                                    <!-- <a href="#"><i class="ti-facebook"></i></a>
+                                    <a href="#"><i class="ti-pinterest"></i></a>
+                                    <a href="#"><i class="ti-instagram"></i></a> -->
+                                    <a> </a>
+                                </div>
+                            </div>
+                            <!--end share sosial media -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-tab">
+                    <div class="tab-item">
+                        <ul class="nav" role="tablist">
+                            <li>
+                                <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-item-content">
+                        <div class="tab-content">
+                            <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
+                                <div class="product-content">
+                                    <div class="row">
+                                        <div class="col-lg-7">
+                                            <h5>Introduction</h5>
+                                            <p>{{.data.Product.LongDescription}}</p>
+                                            <!-- <h5>Features</h5>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                                ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat. Duis aute irure dolor in </p> -->
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <!-- <img src="http://127.0.0.1:5500/public/template/template-web/kas/img/product-single/tab-desc.jpg"
+                                                alt=""> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                <div class="specification-table">
+                                    <table>
+                                        <tr>
+                                            <td class="p-catagory">Harga</td>
+                                            <td>
+                                                <div class="p-price">{{.data.Product.Price}}</div>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                                <td class="p-catagory">Add To Cart</td>
+                                                <td>
+                                                    <div class="cart-add">+ add to cart</div>
+                                                </td>
+                                            </tr> -->
+                                        <tr>
+                                            <td class="p-catagory">Stok</td>
+                                            <td>
+                                                <div class="p-stock">{{.data.Product.Stock}}</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-catagory">Ukuran</td>
+                                            <td>
+                                                {{if eq .data.Product.Diameter 0}}
+                                                <div class="p-size">P: {{.data.Product.Long}} CM
+                                                    L: {{.data.Product.Wide}} CM
+                                                    T: {{.data.Product.Tall}} CM</div>
+
+                                                    {{else}}
+
+                                                    Diameter : {{.data.Product.Diameter}} CM Tinggi: {{.data.Product.Tall}} CM
+
+                                                    {{end}}
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td class="p-catagory">Material</td>
+                                            <td>
+                                                <div class="p-size">stanlistil, fabrik, busa</div>
+                                            </td>
+                                        </tr> -->
+                                        <!-- <tr>
+                                            <td class="p-catagory">Color</td>
+                                            <td><span class="cs-color"></span></td>
+                                        </tr> -->
+                                        <tr>
+                                            <td class="p-catagory">Sku</td>
+                                            <td>
+                                                <div class="p-code">{{.data.Product.SKU}}</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Shop Section End -->
+
+
+<!-- Products shope dua-->
+<section class="related spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="related-title">Related Product</h3>
+            </div>
+        </div>
+        <div class="row">
+            {{range .related.Product}}
+            <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
+                <a href="/shop-detail/{{.ID}}">
+                    <div class="product__item">
+                        <div class="product__item__pic bag-cont">
+                            <img src="{{.ImagePrimary}}" alt="">
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{.Name}}</h6>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>{{.Price}}</h5>
+                            <div class="product__color__select">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            {{end}}
+
+        </div>
+    </div>
+</section>
+<!--end Products shope dua-->
+
+
+<!-- end konten 2 -->
+
+<!-- Related Products Section End -->
+
+{{template "web/partials/footer_dasboard" .}}

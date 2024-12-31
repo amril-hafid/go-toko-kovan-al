@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Registration Page</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+</head>
+
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="/index2.html"><b>Admin</b>LTE</a>
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new membership</p>
+
+              
+                <form action="/users" method="post">
+<!-- 
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="nama" placeholder="Full name" data-target-input="nearest">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="exampleInputNama1">Nama </label>
+                        <input type="text" id="exampleInputNama1" name="nama" class="form-control"  placeholder="Nama" required>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="exampleInputNama1">Nama :</label>
+                        <input type="text" id="exampleInputNama1" name="nama" class="form-control is-invalid"  placeholder="Nama">
+                        <span  class="error invalid-feedback">Please enter a Nama</span>
+                    </div> -->
+                    <!-- <div class="input-group mb-3">
+                        <input type="email" class="form-control" name="email" placeholder="Email" data-target-input="nearest">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email </label>
+                        <input type="email" id="exampleInputEmail1" name="email" class="form-control"  placeholder="Email" required>
+                    </div>
+
+                    <!-- <div class="input-group mb-3">
+                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir" data-target-input="nearest">
+                       
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="exampleInputDate1">Tanggal Lahir </label>
+                        <input type="date" id="exampleInputDate1" name="tanggal_lahir" class="form-control" data-target-input="nearest"  placeholder="Tanggal Lahir" required>
+                    </div>
+
+                    <!-- <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="no_hp" placeholder="Number Phone" data-target-input="nearest">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="exampleInputHp1">Number Phone</label>
+                        <input type="text" id="exampleInputHp1" name="no_hp" class="form-control" data-target-input="nearest"  placeholder="Number Phone" required>
+                    </div>
+
+                    <!-- <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="password" placeholder="Password" data-target-input="nearest">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" id="exampleInputPassword1" name="password" class="form-control" data-target-input="nearest"  placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPasswordRetype">Retype Password</label>
+                        <input type="password" id="exampleInputPasswordRetype" name="password-retype" class="form-control" data-target-input="nearest"  placeholder="Password" required>
+                    </div>
+
+                    <!-- <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="password-retype" placeholder="Retype password" data-target-input="nearest">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="row">
+                        <div class="col-8">
+                         
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+                <a href="/login" class="text-center">I already have a membership</a>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="/plugins/toastr/toastr.min.js"></script>
+    {{.alert}}
+</body>
+
+</html>

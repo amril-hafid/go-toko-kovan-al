@@ -1,0 +1,119 @@
+{{template "dasboard/partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Product</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/product">Product</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Form Update</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/product/update" method="post">
+
+                        <div class="form-group">
+                            <label for="sku">SKU*</label>
+                            <input type="text" name="sku" class="form-control" id="sku" placeholder="SKU"
+                                required value="{{.data.Product.SKU}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name*</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Nama"
+                                required value="{{.data.Product.Name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Harga*</label>
+                            <input type="number" name="price" class="form-control" id="price"
+                                placeholder="Harga" required value="{{.data.Product.Price}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Stock</label>
+                            <input type="text" name="stock" class="form-control" id="stock" placeholder="Stock"
+                                required value="{{.data.Product.Stock}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="short_description">Short Description</label>
+                            <input type="text" name="short_description" class="form-control"
+                                id="short_description" placeholder="Short Description" value="{{.data.Product.ShortDescription}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="long_description">Long Description</label>
+                            <input type="text" name="long_description" class="form-control"
+                                id="long_description" placeholder="Long Description" value="{{.data.Product.LongDescription}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="size_type">Size Type</label>
+                            <input type="number" name="size_type" class="form-control" id="size_type"
+                                placeholder="Size Type" value="{{.data.Product.SizeType}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="long">Long (cm)</label>
+                            <input type="number" name="long" class="form-control" id="long" placeholder="Long" value="{{.data.Product.Long}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="wide">Wide (cm)</label>
+                            <input type="number" name="wide" class="form-control" id="wide" placeholder="Wide" value="{{.data.Product.Wide}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="tall">Tall (cm)</label>
+                            <input type="number" name="tall" class="form-control" id="tall" placeholder="Tall" value="{{.data.Product.Tall}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="diameter">Diameter (cm)</label>
+                            <input type="number" name="diameter" class="form-control" id="diameter"
+                                placeholder="Diameter" value="{{.data.Product.Diameter}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_kategory">Kategori*</label>
+                            <select class="form-control select2" style="width: 100%;" id="id_kategory"
+                                name="id_kategory" required>
+                                <option selected="selected">----</option>
+                                {{ range .category}}
+                                <option value="{{.ID}}">{{.Name}}</option>
+                                {{end}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status *</label>
+                            <select class="form-control select2" style="width: 100%;" id="status" name="status">
+                                {{if eq .data.Product.Status "1"}}
+                                    <option selected="selected" value="1">Di Publish</option>
+                                    <option value="0"> Di Sembunyikan</option>
+                                {{else}}
+                                    <option selected="selected" value="0"> Di Sembunyikan</option>
+                                    <option value="1">Di Publish</option>
+                                {{end}}
+                            </select>
+                        </div>
+                        <input type="hidden" name="id" value="{{.data.Product.ID}}">
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- footer -->
+{{template "dasboard/partials/footer_dasboard" .}}

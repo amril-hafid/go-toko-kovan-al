@@ -1,0 +1,65 @@
+{{template "dasboard/partials/header_dasboard" .}}
+
+<!-- header end -->
+
+
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Category</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard">Dasboard</a></li>
+                        <li class="breadcrumb-item"><a href="/dasboard/category">Category</a></li>
+                        <li class="breadcrumb-item active">Update</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Form Update</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/dasboard/category/update" method="post">
+
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" name="name" value="{{.data.Name}}" class="form-control" id="Name" placeholder="Nama" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kategori">Status</label>
+                            <select class="form-control select2" style="width: 100%;" id="kategori" name="status">
+                                {{if eq .data.Status "1"}}
+                                    <option selected="selected" value="1">Di Publish</option>
+                                    <option value="0"> Di Sembunyikan</option>
+                                {{else}}
+                                    <option selected="selected" value="0"> Di Sembunyikan</option>
+                                    <option value="1">Di Publish</option>
+                                {{end}}
+                            </select>
+                        </div>
+
+                        <input type="hidden" name="id" value="{{.data.ID}}">
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- footer -->
+{{template "dasboard/partials/footer_dasboard" .}}

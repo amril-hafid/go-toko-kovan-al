@@ -1,0 +1,112 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<div class="content-wrapper" style="min-height: 1446px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dasboard</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active">Dasboard</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{.data.user}}</h3>
+                            <p>User Registrations</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="/dasboard/admin/user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                 <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{.data.file}}</h3>
+                            <p>Dokumen Upload</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-document"></i>
+                        </div>
+                        <a href="/dasboard/admin/dokumen" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{.data.arsip}}</h3>
+                            <p>Arsip</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-book"></i>
+                        </div>
+                        <a href="/dasboard/admin/arsip" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+                <!-- <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            
+                            <h3>3</h3>
+                            <p>Surat</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <a href="/dasboard/admin/surat" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div> -->
+
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>0</h3>
+                            <p>Berita</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-newspaper"></i>
+                        </div>
+                        <a href="/dasboard/admin/berita" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <!-- <h3>{{.data.surat}}</h3> -->
+                            <h3>0</h3>
+                            <p>Pengumuman</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-newspaper"></i>
+                        </div>
+                        <a href="/dasboard/admin/pengumuman" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

@@ -1,0 +1,118 @@
+{{template "web/partials/header_dasboard" .}}
+
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Shop</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./index.html">Home</a>
+                        <span>Shop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shop Section Begin -->
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                <!-- <li><a href="#">Men (20)</a></li>
+                                                <li><a href="#">Women (20)</a></li>
+                                                <li><a href="#">Bags (20)</a></li>
+                                                <li><a href="#">Clothing (20)</a></li>
+                                                <li><a href="#">Shoes (20)</a></li>
+                                                <li><a href="#">Accessories (20)</a></li>
+                                                <li><a href="#">Kids (20)</a></li>
+                                                <li><a href="#">Kids (20)</a></li>
+                                                <li><a href="#">Kids (20)</a></li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <!-- <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Showing 1–12 of 126 results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+
+                    {{range .data.Product}}
+                    <div class="col-6 col-lg-4 col-md-6 col-sm-6">
+                        <a href="/shop-detail/{{.ID}}">
+                        <div class="product__item">
+                            <div class="product__item__pic"  >
+                                <img src="{{.ImagePrimary}}"   alt="">
+                            </div>
+                           
+                            <div class="product__item__text">
+                                <h6>{{.Name}}</h6>
+                                <h5>{{.Price}}</h5>
+                                <div class="product__color__select">
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    {{end}}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__pagination">
+                            {{if gt .data.LastPage 1}}
+                                {{if gt .data.Page 3}}
+                                    <a href="?page=1&limit=6{{if gt (len $.data.Search) 0}}&search={{$.data.Search}}{{else}}{{end}}{{if gt (len $.data.Category) 0}}&category={{$.data.Category}}{{else}}{{end}}">1</a>
+                                    {{if gt .data.Page 4}}
+                                        <span>...</span>
+                                    {{end}}
+                                {{end}}
+                                {{range seq (sub .data.Page 1) (min (add .data.Page 1) .data.LastPage)}}
+                                    {{if gt . 0}}
+                                    <a href="?page={{.}}&limit=6{{if gt (len $.data.Search) 0}}&search={{$.data.Search}}{{else}}{{end}}{{if gt (len $.data.Category) 0}}&category={{$.data.Category}}{{else}}{{end}}" class="{{if eq . $.data.Page}}active{{end}}">{{.}}</a>
+                                    {{end}}
+                                {{end}}
+
+                                {{if lt .data.Page (sub .data.LastPage 2)}}
+                                    <span>...</span>
+                                    <a href="?page={{$.data.LastPage}}&limit=6{{if gt (len $.data.Search) 0}}&search={{$.data.Search}}{{else}}{{end}}{{if gt (len $.data.Category) 0}}&category={{$.data.Category}}{{else}}{{end}}">{{.data.LastPage}}</a>
+                                {{end}}
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Section End -->
+
+
+{{template "web/partials/footer_dasboard" .}}

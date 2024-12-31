@@ -1,0 +1,170 @@
+{{template "partials/header_dasboard" .}}
+
+<!-- header end -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Image Show</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/admin">Dasboard</a></li>
+                        <li class="breadcrumb-item active">Image Show</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Daftar Pengumuman</h3>
+                        </div>
+                        <div class="card-header">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                                <i class="fas fa-plus-circle"></i> New Image </button>
+                            <a href="/dasboard/admin/image-show/recycle" class="btn btn-danger float-right"> <i
+                                    class="fas fa-trash"></i> Data Sampah</a>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No. </th>
+                                        <th>Image</th>
+                                        <th>Judul</th>
+                                        <th>Isi</th>
+                                        <th>Link</th>
+                                        <th>Tanggal di Buat</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {{ range .data.imageShow}}
+                                    <tr role="row" class="odd">
+                                        <td>{{.Index }}</td>
+                                        <td><img src="/image/{{.SlideShowImages}}" alt="" width="100px"></td>
+                                        <td>{{.Judul}}</td>
+                                        <td>{{.Keterangan}}</td>
+                                        <td>{{.Link}}</td>
+                                        <td>{{.CreatedAt.Format "02-01-2006 15:04:05" }}</td>
+                                        {{if eq .Utama 1}}
+                                        <td class="project-actions"><a class="btn btn-block btn-outline-success btn-sm"
+                                                href=""><i class="fas fa-lock"></i>Public</a>
+                                        </td> {{else}}
+                                        <td class="project-actions"><a class="btn btn-block btn-outline-danger btn-sm"
+                                                href=""><i
+                                                    class="fas fa-lock-open"></i>Privet</a>
+                                        </td>
+                                        {{end}}
+                                        <td class="project-actions text-right">
+                                            <a class="btn btn-primary btn-sm" href="/dasboard/admin/image-show/detail/{{.ID}}"><i
+                                                    class="fas fa-folder"></i>Detail</a>
+                                            <a class="btn btn-info btn-sm"
+                                                href="/dasboard/admin/image-show/update/{{.ID}}"><i
+                                                    class="fas fa-pencil-alt"></i> Edit</a>
+                                            <a class="btn btn-danger btn-sm"
+                                                href="/dasboard/admin/image-show/delete/{{.ID}}"><i
+                                                    class="fas fa-trash"></i> Delete</a>
+                                        </td>
+                                    </tr>
+                                    {{ end}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <!-- /.modal -->
+
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Image Show Baru</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/dasboard/admin/image-show/new" method="post" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="judul">Judul </label>
+                                    <input type="text" name="judul" class="form-control" id="judul"
+                                        placeholder="Ketarangan ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="isi">Isi</label>
+                                  <Textarea name="keterangan" id="isi" class="form-control">
+
+                                  </Textarea>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-control select2" style="width: 100%;" name="status">
+                                        <option selected="selected" value="1">utama</option>
+                                        <option value="0">no utama</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="url">Url</label>
+                                    <input type="text" name="url" class="form-control" id="url"
+                                        placeholder="Ketarangan ">
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label for="image">File input</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input" id="image">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <!-- <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- footer -->
+{{template "partials/footer_dasboard" .}}

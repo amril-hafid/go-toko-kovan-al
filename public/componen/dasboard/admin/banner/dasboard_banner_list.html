@@ -1,0 +1,145 @@
+{{template "dasboard/partials/header_dasboard" .}}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Banner</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard">Dasboard</a></li>
+                        <li class="breadcrumb-item active">Banner</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Daftar Bannner</h3>
+                        </div>
+                        <div class="card-header">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                                <i class="fas fa-plus-circle"></i>Product baru</button>
+                           
+                        </div>
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Name</th>
+                                        <th>URL</th>
+                                        <th>Image</th>
+                                        <th>Description</th>
+                                        <th>Image Primary</th>
+                                        <th>Status</th>
+                                        <th>Tanggal di Buat</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{ range .data}}
+                                    <tr role="row" class="odd">
+                                        <td>{{.Index}}</td>
+                                        <td>{{.Name}}</td>
+                                        <td>{{.URL}}</td>
+                                        <td><img src="/image/{{.ImageURL}}" alt="" style="width: 70px;"></td>
+                                        <td>{{.Description}}</td>
+                                        <td>{{.IsPrimary}}</td>                                        
+                                    
+                                        <td>{{.CreatedAt.Format "02-01-2006 15:04:05" }}</td>
+                                        <td class="project-actions text-right">
+                                            <!-- <a class="btn btn-primary btn-sm" href="/dasboard/banner/detail/{{.ID}}"><i
+                                                    class="fas fa-folder"></i>
+                                                View</a> -->
+                                            <!-- <a class="btn btn-info btn-sm" href="/dasboard/banner/Update/{{.ID}}"><i
+                                                    class="fas fa-pencil-alt"></i> Edit</a> -->
+                                            <a class="btn btn-danger btn-sm" href="/dasboard/banner/delete/{{.ID}}"><i
+                                                    class="fas fa-trash"></i> Delete</a>
+                                        </td>
+                                    </tr>
+                                    {{ end}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Form Banner Baru</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/dasboard/banner/new" method="post"  enctype="multipart/form-data" >
+                            <div class="card-body">
+                                
+                                <div class="form-group">
+                                    <label for="name">Name*</label>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="url">URL</label>
+                                    <input type="text" name="url" class="form-control" id="url"
+                                        placeholder="URL" required>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" name="description" class="form-control"
+                                        id="description" placeholder="Description">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="is_promary">Image Status</label>
+                                    <select class="form-control select2" style="width: 100%;" id="is_promary"
+                                        name="is_promary">
+                                        <option selected="selected" value="0">-- --</option>
+                                        <option value="1">Image primary</option>
+                                    </select>
+                                </div>
+                    
+                            
+
+                                <div class="form-group">
+                                    <label for="exampleInputFile">File input *</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="file-image" class="custom-file-input"
+                                                id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{{template "dasboard/partials/footer_dasboard" .}}

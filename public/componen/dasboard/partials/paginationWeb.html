@@ -1,0 +1,15 @@
+
+
+<ul class="pagination">
+    <li class="prev">
+        <a href="{{ .pagination.PrevPage }}" data-ci-pagination-page=""rel="prev">←</a>
+    </li>
+    {{ range .pagination.Links }}
+    
+        <li class=""><a href="{{ .Url }}" data-ci-pagination-page="" rel="start">{{ .Page }}</a></li>
+    {{ end }}
+
+    <li class="next">
+        <a href="{{ .pagination.NextPage }}" data-ci-pagination-page="" rel="next">→</a>
+    </li>
+</ul>

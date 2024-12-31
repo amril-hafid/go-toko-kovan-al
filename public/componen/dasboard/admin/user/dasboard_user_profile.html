@@ -1,0 +1,153 @@
+{{template "dasboard/partials/header_dasboard" .}}
+
+<!-- header end -->
+
+<!-- conten  -->
+
+<div class="content-wrapper" style="min-height: 1604.44px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profile</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dasboard/">Dasboard</a></li>
+                        <li class="breadcrumb-item active">Profile</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <!-- <div class="text-center">
+                                <img class="profile-user-img img-fluid" style="border-radius: 50%; object-fit: cover;"
+                                    src="/image/profile/{{.data.ProfileFile}}" alt="User profile picture">
+                            </div> -->
+                            <div class="container d-flex justify-content-center align-items-center">
+                                <div class="lingkaran overflow-hidden rounded-circle">
+                                    <img src="/image/profile/{{.data.ProfileFile}}" alt="Deskripsi Gambar" class="img-fluid">
+                                </div>
+                            </div>
+                            <h3 class="profile-username text-center">{{.data.Nama}}</h3>
+                            <p class="text-muted text-center"></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Data Diri</a></li>
+                                {{ if eq $.role "admin" }}
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Reset Password</a></li>
+                                {{ else if eq $.role "user" }}
+                                {{ if eq $.header.ID .ID }}
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Reset Password</a></li>
+                                {{ end }}
+                                {{ end }}
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="activity">
+                                    <form class="form-horizontal" >
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Nama</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputName" disabled value="{{.data.Nama}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputName" disabled value="{{.data.Email}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputName" disabled value="{{.data.TanggalLahir}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">No HP</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputName" disabled value="{{.data.NoHp}}">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {{ if eq $.role "admin" }}
+                                <div class="tab-pane" id="settings">
+                                    <form class="form-horizontal" action="/dasboard/user/new-password" method="post">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="password" class="form-control" id="inputName"
+                                                    placeholder="password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Retype Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="password-Retype" class="form-control" id="inputName"
+                                                    placeholder="Retype Password">
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="id" value="{{$.data.ID}}">
+                                        
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-danger">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {{ else if eq $.role "user" }}
+                                {{ if eq $.header.ID .ID }}
+                                <div class="tab-pane" id="settings">
+                                    <form class="form-horizontal" action="/dasboard/user/new-password" method="post">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="password" class="form-control" id="inputName"
+                                                    placeholder="password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-2 col-form-label">Retype Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="password-Retype" class="form-control" id="inputName"
+                                                    placeholder="Retype Password">
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="id" value="{{$.data.ID}}">
+                                        
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-danger">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- content end  -->
+<!-- footer -->
+{{template "dasboard/partials/footer_dasboard" .}}

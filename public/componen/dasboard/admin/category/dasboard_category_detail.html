@@ -1,0 +1,199 @@
+{{template "dasboard/partials/header_dasboard" .}}
+
+<!-- conten  -->
+<div class="content-wrapper" style="min-height: 1604.44px;">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Category</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dasboard">Dasboard</a></li>
+            <li class="breadcrumb-item"><a href="/dasboard/category">Category</a></li>
+            <li class="breadcrumb-item active">Detail</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="invoice p-3 mb-3">
+            <div class="row">
+              <div class="col-12">
+                <h4>
+                  <i class="fas fa-globe"></i> Category Detail
+                </h4>
+              </div>
+            </div>
+            <div class="row invoice-info">
+              <div class="col-sm-4 invoice-col">
+                <address>
+                  <strong>Judul : {{.data.category.Name}}</strong>
+                  <br>
+                  <!-- Uploader : {{.data.category.UserName}} -->
+                  <!-- <br> -->
+                  Status :
+                  {{if eq .data.category.Status 1}}
+                  <td class="project-actions"><a class="btn btn-block btn-success btn-sm">Di Publish</a>
+                  </td> {{else}}
+                  <td class="project-actions"><a class="btn btn-block btn-danger btn-sm">Di Sembunyikan</a>
+                  </td>
+                  {{end}}
+                  <br>
+                  Tanggal Di Upload : {{.data.category.CreatedAt.Format "02-01-2006 15:04:05" }}
+                </address>
+              </div>
+            </div>
+           
+            <br>
+            <br>
+
+            <div class="row">
+              <div class="col-6">
+              </div>
+            </div>
+            <div class="row no-print">
+              <div class="col-12">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">
+                Upload Gamabar Baru
+              </button>
+
+              
+            </div>
+            <div class="card-body">
+              <div class="row">
+                {{ if eq .data.image.ID 0}}
+                {{else}}
+                <div class="col-sm-2">
+                  <a href="/image/berita/{{.data.image.NamaImagePrimary}}?text={{.data.image.Index}}"
+                    data-toggle="lightbox" data-title="Image - Utama" data-gallery="gallery">
+                    <img src="/image/berita/{{.data.image.NamaImagePrimary}}?{{.data.image.Index}}"
+                      class="img-fluid mb-2" alt="white sample">
+                  </a>
+                  <td class="project-actions">
+                    <a class="btn btn-danger btn-sm" href="/dasboard/admin/berita/image/delete/{{.data.image.ID}}"><i
+                        class="fas fa-trash"></i> Delete</a>
+                  </td>
+                </div>
+                {{end }}
+                {{range .data.image.ImageNoPrimary}}
+                <div class="col-sm-2">
+                  <a href="/image/berita/{{.NamaImageNoPrimary}}?text={{.Index}}" data-toggle="lightbox"
+                    data-title="sample " data-gallery="gallery">
+                    <img src="/image/berita/{{.NamaImageNoPrimary}}?{{.Index}}" class="img-fluid mb-2"
+                      alt="white sample">
+                  </a>
+                  <td class="project-actions">
+                    
+                    <a class="btn btn-danger btn-sm" href="/dasboard/admin/berita/image/delete/{{.ID}}"><i
+                        class="fas fa-trash"></i> Delete</a>
+                  </td>
+                </div>
+                {{end}}
+
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Berita
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <textarea id="summernote">
+                {{.data.berita.Berita}}
+                </textarea>
+            </div>
+            <div class="card-footer">
+
+            </div>
+          </div>
+        </div>
+        <!-- /.col-->
+
+      </div>
+    </div>
+    <!-- /.modal -->
+
+
+
+
+    <div class="modal fade" id="modal-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Image Baru</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/dasboard/admin/berita/image/new" method="post" enctype="multipart/form-data">
+              <div class="card-body">
+
+                <div class="form-group">
+                  <label for="kategori">Image Utama</label>
+                  <select class="form-control select2" style="width: 100%;" id="kategori" name="image_utama">
+                    <option selected="selected" value="">tidak</option>
+                    <option value="1">Utama</option>
+                  </select>
+                  <input type="hidden" name="id_berita" value="{{.data.berita.ID}}">
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="image_berita" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                            <span class="input-group-text">Upload</span>
+                        </div> -->
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+  </section>
+
+</div>
+<!-- content end  -->
+
+
+{{template "dasboard/partials/footer_dasboard" .}}
